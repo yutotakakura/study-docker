@@ -1,4 +1,5 @@
 # メモ
+## アプリの作成・実行
 イメージを作成
 ```
 $ docker image build -t sample/webrick:latest .
@@ -30,6 +31,17 @@ $ docker container exec webrick ruby -v
 後片付け
 ```
 $ docker system prune -a
+```
+# Dockerfileの作成
+Dockerfileに最初からコマンドを記載していかない。<br>
+まずは /bin/bashでコンテナに入り、直でコマンドを実行してうまくいったものを後から追加していく。
+```
+$ docker image build -t sample/sinatra:latest .
+```
+-v 以下のオプションで、ローカルとコンテナでディレクトリを共有する。<br>
+イメージを再作成しなくてもローカルの反映を逐一コンテナにも反映させることができる。
+```
+$ docker container run -it -p 4567:4567 --name sinatra -v ${PWD}/src:/var/www sample/sinatra:latest
 ```
 
 # 参考文献
