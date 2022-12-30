@@ -39,7 +39,8 @@ Dockerfileに最初からコマンドを記載していかない。<br>
 $ docker image build -t sample/sinatra:latest .
 ```
 -v 以下のオプションで、ローカルとコンテナでディレクトリを共有する。<br>
-イメージを再作成しなくてもローカルの反映を逐一コンテナにも反映させることができる。
+イメージを再作成しなくてもローカルの反映を逐一コンテナにも反映させることができる。<br>
+Dockerfileに正常に動作したコマンドを追記したら、-itは不要。
 ```
 $ docker container run -it -p 4567:4567 --name sinatra -v ${PWD}/src:/var/www sample/sinatra:latest
 ```
